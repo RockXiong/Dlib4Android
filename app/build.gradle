@@ -13,6 +13,8 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11 -frtti -fexceptions"
+                arguments '-DANDROID_PLATFORM=android-19','-DANDROID_TOOLCHAIN=clang','-DANDROID_STL=c++_shared'
+                //gnustl_static
             }
         }
     }
@@ -24,7 +26,9 @@ android {
     }
     externalNativeBuild {
         cmake {
-            path "CMakeLists.txt"
+            path "./src/main/cpp/dlib/CMakeLists.txt" 
+//            path "CMakeLists.txt"
+           
         }
     }
 }

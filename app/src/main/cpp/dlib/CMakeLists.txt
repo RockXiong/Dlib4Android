@@ -4,7 +4,7 @@
 #
 
 
-cmake_minimum_required(VERSION 2.8.12)
+#cmake_minimum_required(VERSION 2.8.12)
 project(dlib)
 
 # default to a Release build (except if CMAKE_BUILD_TYPE is set)
@@ -94,7 +94,7 @@ if (NOT TARGET dlib)
 
    option(DLIB_ISO_CPP_ONLY ${DLIB_ISO_CPP_ONLY_STR} OFF)
    toggle_preprocessor_switch(DLIB_ISO_CPP_ONLY)
-   option(DLIB_NO_GUI_SUPPORT ${DLIB_NO_GUI_SUPPORT_STR} OFF)
+   option(DLIB_NO_GUI_SUPPORT ${DLIB_NO_GUI_SUPPORT_STR} ON)#去除GUI模块
    toggle_preprocessor_switch(DLIB_NO_GUI_SUPPORT)
    option(DLIB_ENABLE_STACK_TRACE ${DLIB_ENABLE_STACK_TRACE_STR} OFF)
    toggle_preprocessor_switch(DLIB_ENABLE_STACK_TRACE)
@@ -152,7 +152,10 @@ if (NOT TARGET dlib)
    toggle_preprocessor_switch(DLIB_GIF_SUPPORT) 
    #toggle_preprocessor_switch(DLIB_USE_FFTW)
    toggle_preprocessor_switch(DLIB_USE_MKL_FFT)
-
+   
+    set(my_source_files
+          ./../native-lib.cpp
+    )
 
    set(source_files 
          base64/base64_kernel_1.cpp
@@ -170,8 +173,12 @@ if (NOT TARGET dlib)
          data_io/mnist.cpp
          dnn/cpu_dlib.cpp
          dnn/tensor_tools.cpp
+         
+             
+         #添加我的文件
+         ${my_source_files}
    )
-
+    
 
    if (DLIB_ISO_CPP_ONLY)
        add_library(dlib STATIC ${source_files} )
