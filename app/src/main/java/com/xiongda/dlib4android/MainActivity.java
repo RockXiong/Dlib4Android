@@ -21,9 +21,9 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("dlib");
-    }
+//    static {
+//        System.loadLibrary("dlib");
+//    }
 
     public static final int REQUESTCODE_PICK = 0X002;
     private Button btnOpenImage;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.
      */
-    public native int[] stringFromJNI(int[] pixels, int height, int width);
+//    public native int[] stringFromJNI(int[] pixels, int height, int width);
 
     private int[] face_detection(Bitmap origin_image) {
         float scale = 240.f / Math.max(origin_image.getHeight(), origin_image.getWidth());
@@ -74,16 +74,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void drawResult(Bitmap scaled) {
-        int[] rect = face_detection(scaled);
-        Canvas canvas = new Canvas(scaled.copy(Bitmap.Config.ARGB_8888,true));
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStrokeWidth(3.0f);
-        canvas.drawLine(rect[0], rect[1], rect[2], rect[1], paint);//up
-        canvas.drawLine(rect[0], rect[1], rect[0], rect[3], paint);//left
-        canvas.drawLine(rect[0], rect[3], rect[2], rect[3], paint);//down
-        canvas.drawLine(rect[2], rect[1], rect[2], rect[3], paint);//right
-        mImageView.setImageBitmap(scaled);
+//        int[] rect = face_detection(scaled);
+//        Canvas canvas = new Canvas(scaled.copy(Bitmap.Config.ARGB_8888,true));
+//        Paint paint = new Paint();
+//        paint.setColor(Color.RED);
+//        paint.setStrokeWidth(3.0f);
+//        canvas.drawLine(rect[0], rect[1], rect[2], rect[1], paint);//up
+//        canvas.drawLine(rect[0], rect[1], rect[0], rect[3], paint);//left
+//        canvas.drawLine(rect[0], rect[3], rect[2], rect[3], paint);//down
+//        canvas.drawLine(rect[2], rect[1], rect[2], rect[3], paint);//right
+//        mImageView.setImageBitmap(scaled);
 
     }
 
